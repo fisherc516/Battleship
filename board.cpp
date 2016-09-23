@@ -113,7 +113,255 @@ void Board::randomShips() //5,4,3,3,2
 		}
 	}
 	if(orientation == 2) //Vertical
+		{
+			if(row >= 8)
+			{
+				if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0 && shipBoard[column][row-3] == 0)
+				{
+					shipBoard[column][row] = 4;
+					shipBoard[column][row-1] = 4;
+					shipBoard[column][row-2] = 4;
+					shipBoard[column][row-3] = 4;
+					isFourPlaced = true;
+				}
+			}
+			else
+			{
+				if(shipBoard[column][row+1] == 0 && shipBoard[column][row+2] == 0 && shipBoard[column][row+3] == 0)
+				{
+					shipBoard[column][row] = 4;
+					shipBoard[column][row+1] = 4;
+					shipBoard[column][row+2] = 4;
+					shipBoard[column][row+3] = 4;
+					isFourPlaced = true;
+				}
+				else if(row >= 3)
+				{
+					if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0 && shipBoard[column][row-3] == 0)
+					{
+						shipBoard[column][row] = 4;
+						shipBoard[column][row-1] = 4;
+						shipBoard[column][row-2] = 4;
+						shipBoard[column][row-3] = 4;
+						isFourPlaced = true;
+					}
+				}
+			}
+		}
+	}while(!isFourPlaced);
+	//3,3
+	bool isFirstThreePlaced = false;
+	bool isSecondThreePlaced = false;
+	do
 	{
-		
-	}
+		do
+		{
+			column = rand()%10 + 1;
+			row = rand()%10 + 1;
+		}while(shipBoard[column][row] != 0);
+		orientation = rand()%2 + 1;
+		if(orientation == 1) //Horizontal
+		{
+			if(column >= 9)
+			{
+				if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0)
+				{
+					shipBoard[column][row] = 3;
+					shipBoard[column-1][row] = 3;
+					shipBoard[column-2][row] = 3;
+					if(isFirstThreePlaced)
+					{
+						isSecondThreePlaced = true;
+					}
+					else
+					{
+						isFirstThreePlaced = true;
+					}
+				}
+				else
+				{
+					orientation = 2;
+				}
+			}
+			else
+			{
+				if(shipBoard[column+1][row] == 0 && shipBoard[column+2][row] == 0)
+				{
+					shipBoard[column][row] = 3;
+					shipBoard[column+1][row] = 3;
+					shipBoard[column+2][row] = 3;
+					if(isFirstThreePlaced)
+					{
+						isSecondThreePlaced = true;
+					}
+					else
+					{
+						isFirstThreePlaced = true;
+					}
+				}
+				else if(column >= 2)
+				{
+					if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0)
+					{
+						shipBoard[column][row] = 3;
+						shipBoard[column-1][row] = 3;
+						shipBoard[column-2][row] = 3;
+						if(isFirstThreePlaced)
+						{
+							isSecondThreePlaced = true;
+						}
+						else
+						{
+							isFirstThreePlaced = true;
+						}
+					}
+					else
+					{
+						orientation = 2;
+					}
+				}
+				else
+				{
+					orientation = 2;
+				}
+			}
+		}
+		if(orientation == 2) //Vertical
+		{
+			if(row >= 9)
+			{
+				if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0)
+				{
+					shipBoard[column][row] = 3;
+					shipBoard[column][row-1] = 3;
+					shipBoard[column][row-2] = 3;
+					if(isFirstThreePlaced)
+					{
+						isSecondThreePlaced = true;
+					}
+					else
+					{
+						isFirstThreePlaced = true;
+					}
+				}
+			}
+			else
+			{
+				if(shipBoard[column][row+1] == 0 && shipBoard[column][row+2] == 0)
+				{
+					shipBoard[column][row] = 3;
+					shipBoard[column][row+1] = 3;
+					shipBoard[column][row+2] = 3;
+					if(isFirstThreePlaced)
+					{
+						isSecondThreePlaced = true;
+					}
+					else
+					{
+						isFirstThreePlaced = true;
+					}
+				}
+				else if(row >= 2)
+				{
+					if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0)
+					{
+						shipBoard[column][row] = 3;
+						shipBoard[column][row-1] = 3;
+						shipBoard[column][row-2] = 3;
+						if(isFirstThreePlaced)
+						{
+							isSecondThreePlaced = true;
+						}
+						else
+						{
+							isFirstThreePlaced = true;
+						}
+					}
+				}
+			}
+		}
+	}while(!isSecondThreePlaced);
+	//2
+	bool isTwoPlaced = false;
+	do
+	{
+		do
+		{
+			column = rand()%10 + 1;
+			row = rand()%10 + 1;
+		}while(shipBoard[column][row] != 0);
+		orientation = rand()%2 + 1;
+		if(orientation == 1) //Horizontal
+		{
+			if(column >= 10)
+			{
+				if(shipBoard[column-1][row] == 0)
+				{
+					shipBoard[column][row] = 2;
+					shipBoard[column-1][row] = 2;
+					isTwoPlaced = true;
+				}
+				else
+				{
+					orientation = 2;
+				}
+			}
+			else
+			{
+				if(shipBoard[column+1][row] == 0)
+				{
+					shipBoard[column][row] = 2;
+					shipBoard[column+1][row] = 2;
+					isTwoPlaced = true;
+				}
+				else if(column >= 1)
+				{
+					if(shipBoard[column-1][row] == 0)
+					{
+						shipBoard[column][row] = 2;
+						shipBoard[column-1][row] = 2;
+						isTwoPlaced = true;
+					}
+					else
+					{
+						orientation = 2;
+					}
+				}
+				else
+				{
+					orientation = 2;
+				}
+			}
+		}
+		if(orientation == 2) //Vertical
+		{
+			if(row >= 10)
+			{
+				if(shipBoard[column][row-1] == 0)
+				{
+					shipBoard[column][row] = 2;
+					shipBoard[column][row-1] = 2;
+					isTwoPlaced = true;
+				}
+			}
+			else
+			{
+				if(shipBoard[column][row+1] == 0)
+				{
+					shipBoard[column][row] = 2;
+					shipBoard[column][row+1] = 2;
+					isTwoPlaced = true;
+				}
+				else if(row >= 1)
+				{
+					if(shipBoard[column][row-1] == 0)
+					{
+						shipBoard[column][row] = 2;
+						shipBoard[column][row-1] = 2;
+						isTwoPlaced = true;
+					}
+				}
+			}
+		}
+	}while(!isTwoPlaced);
 }

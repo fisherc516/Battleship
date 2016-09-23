@@ -17,13 +17,22 @@ void Board::pickShips()
 }
 void Board::randomShips() //5,4,3,3,2
 {
+	srand(time(NULL));
+	for(int i = 0; i < 10; i++)
+	{
+		for(int j = 0; j < 10; j++)
+		{
+			shipBoard[i][j] = 0;
+			hitBoard[i][j] = '.';
+		}
+	}
 	//5
-	int column = rand()%10 + 1;
-	int row = rand()%10 + 1;
+	int column = rand()%10;
+	int row = rand()%10;
 	int orientation = rand()%2 + 1;
 	if(orientation == 1) //Horizontal
 	{
-		if(column >= 7)
+		if(column >= 6)
 		{
 			shipBoard[column][row] = 5;
 			shipBoard[column-1][row] = 5;
@@ -42,7 +51,7 @@ void Board::randomShips() //5,4,3,3,2
 	}
 	else if(orientation == 2) //Vertical
 	{
-		if(row >= 7)
+		if(row >= 6)
 		{
 			shipBoard[column][row] = 5;
 			shipBoard[column][row-1] = 5;
@@ -63,36 +72,15 @@ void Board::randomShips() //5,4,3,3,2
 	bool isFourPlaced = false;
 	do
 	{
-		column = rand()%10 + 1;
-		row = rand()%10 + 1;
-	}while(shipBoard[column][row] != 0);
-	orientation = rand()%2 + 1;
-	if(orientation == 1) //Horizontal
-	{
-		if(column >= 8)
+		do
 		{
-			if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0 && shipBoard[column-3][row] == 0)
-			{
-				shipBoard[column][row] = 4;
-				shipBoard[column-1][row] = 4;
-				shipBoard[column-2][row] = 4;
-				shipBoard[column-3][row] = 4;
-			}
-			else
-			{
-				orientation = 2;
-			}
-		}
-		else
+			column = rand()%10;
+			row = rand()%10;
+		}while(shipBoard[column][row] != 0);
+		orientation = rand()%2 + 1;
+		if(orientation == 1) //Horizontal
 		{
-			if(shipBoard[column+1][row] == 0 && shipBoard[column+2][row] == 0 && shipBoard[column+3][row] == 0)
-			{
-				shipBoard[column][row] = 4;
-				shipBoard[column+1][row] = 4;
-				shipBoard[column+2][row] = 4;
-				shipBoard[column+3][row] = 4;
-			}
-			else if(column >= 4)
+			if(column >= 7)
 			{
 				if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0 && shipBoard[column-3][row] == 0)
 				{
@@ -100,6 +88,7 @@ void Board::randomShips() //5,4,3,3,2
 					shipBoard[column-1][row] = 4;
 					shipBoard[column-2][row] = 4;
 					shipBoard[column-3][row] = 4;
+					isFourPlaced = true;
 				}
 				else
 				{
@@ -108,13 +97,38 @@ void Board::randomShips() //5,4,3,3,2
 			}
 			else
 			{
-				orientation = 2;
+				if(shipBoard[column+1][row] == 0 && shipBoard[column+2][row] == 0 && shipBoard[column+3][row] == 0)
+				{
+					shipBoard[column][row] = 4;
+					shipBoard[column+1][row] = 4;
+					shipBoard[column+2][row] = 4;
+					shipBoard[column+3][row] = 4;
+					isFourPlaced = true;
+				}
+				else if(column >= 3)
+				{
+					if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0 && shipBoard[column-3][row] == 0)
+					{
+						shipBoard[column][row] = 4;
+						shipBoard[column-1][row] = 4;
+						shipBoard[column-2][row] = 4;
+						shipBoard[column-3][row] = 4;
+						isFourPlaced = true;
+					}
+					else
+					{
+						orientation = 2;
+					}
+				}
+				else
+				{
+					orientation = 2;
+				}
 			}
 		}
-	}
-	if(orientation == 2) //Vertical
+		if(orientation == 2) //Vertical
 		{
-			if(row >= 8)
+			if(row >= 7)
 			{
 				if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0 && shipBoard[column][row-3] == 0)
 				{
@@ -156,13 +170,13 @@ void Board::randomShips() //5,4,3,3,2
 	{
 		do
 		{
-			column = rand()%10 + 1;
-			row = rand()%10 + 1;
+			column = rand()%10;
+			row = rand()%10;
 		}while(shipBoard[column][row] != 0);
 		orientation = rand()%2 + 1;
 		if(orientation == 1) //Horizontal
 		{
-			if(column >= 9)
+			if(column >= 8)
 			{
 				if(shipBoard[column-1][row] == 0 && shipBoard[column-2][row] == 0)
 				{
@@ -228,7 +242,7 @@ void Board::randomShips() //5,4,3,3,2
 		}
 		if(orientation == 2) //Vertical
 		{
-			if(row >= 9)
+			if(row >= 8)
 			{
 				if(shipBoard[column][row-1] == 0 && shipBoard[column][row-2] == 0)
 				{
@@ -287,13 +301,13 @@ void Board::randomShips() //5,4,3,3,2
 	{
 		do
 		{
-			column = rand()%10 + 1;
-			row = rand()%10 + 1;
+			column = rand()%10;
+			row = rand()%10;
 		}while(shipBoard[column][row] != 0);
 		orientation = rand()%2 + 1;
 		if(orientation == 1) //Horizontal
 		{
-			if(column >= 10)
+			if(column >= 9)
 			{
 				if(shipBoard[column-1][row] == 0)
 				{
@@ -335,7 +349,7 @@ void Board::randomShips() //5,4,3,3,2
 		}
 		if(orientation == 2) //Vertical
 		{
-			if(row >= 10)
+			if(row >= 9)
 			{
 				if(shipBoard[column][row-1] == 0)
 				{
@@ -364,4 +378,24 @@ void Board::randomShips() //5,4,3,3,2
 			}
 		}
 	}while(!isTwoPlaced);
+}
+void Board::printBoards()
+{
+	for(int i = 0; i < 10; i++)
+	{
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << hitBoard[i][j];
+		}
+		std::cout << "\n";
+	}
+	std::cout << "--------------------\n";
+	for(int i = 0; i < 10; i++)
+	{
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << shipBoard[i][j];
+		}
+		std::cout << "\n";
+	}
 }

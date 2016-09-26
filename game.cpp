@@ -5,11 +5,11 @@ Game::Game(Board* p, Board* c)
 	player = p;
 	computer = c;
 }
-void Game::playerGuess()
+bool Game::playerGuess()
 {
-	
+	return(false);
 }
-void Game::compGuess()
+bool Game::compGuess()
 {
-	
+	return(false);
 }

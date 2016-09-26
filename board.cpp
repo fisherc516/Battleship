@@ -15,7 +15,7 @@ void Board::pickShips() //Carrier,Battleship,Cruiser,Submarine,Destroyer
 {
 	bool isEntryCorrect = false;
 	std::string coordinates = "";
-	std::cout << " Here is your board\n";
+	std::cout << "\nHere is your board\n";
 	std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
 	for(int i = 0; i < 10; i++)
 	{
@@ -27,7 +27,7 @@ void Board::pickShips() //Carrier,Battleship,Cruiser,Submarine,Destroyer
 		std::cout << "\n";
 	}
 	std::cout << "\nPlace the Aircraft Carrier (5 spaces)";
-	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting column,starting row),(ending column,ending row) - Don't use spaces";
+	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting row,starting column),(ending row,ending column) - Don't use spaces";
 	do
 	{
 		std::cout << "\n\n: ";
@@ -50,8 +50,150 @@ void Board::pickShips() //Carrier,Battleship,Cruiser,Submarine,Destroyer
 			isEntryCorrect = true;
 		}
 	}while(!isEntryCorrect);
-	
-	
+	isEntryCorrect = false;
+	std::cout << "\nHere is your board\n";
+	std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
+	for(int i = 0; i < 10; i++)
+	{
+		std::cout << " " << i;
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << shipBoard[i][j];
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\nPlace the Battleship (4 spaces)";
+	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting row,starting column),(ending row,ending column) - Don't use spaces";
+	do
+	{
+		std::cout << "\n\n: ";
+		std::cin >> coordinates;
+		if(coordinates.length() != 11)
+		{
+			std::cout << "\nPlease do not use spaces";
+			std::cin >> coordinates;
+		}
+		else if(!numbersChecker(coordinates))
+		{
+			std::cout << "\nPlease make sure your numbers are correct (0-9)";
+		}
+		else if(!spaceChecker(coordinates,4))
+		{
+			std::cout << "\nPlease make sure you've selected 4 spaces in a line";
+		}
+		else
+		{
+			isEntryCorrect = true;
+		}
+	}while(!isEntryCorrect);
+	isEntryCorrect = false;
+	std::cout << "\nHere is your board\n";
+	std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
+	for(int i = 0; i < 10; i++)
+	{
+		std::cout << " " << i;
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << shipBoard[i][j];
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\nPlace the Cruiser (3 spaces)";
+	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting row,starting column),(ending row,ending column) - Don't use spaces";
+	do
+	{
+		std::cout << "\n\n: ";
+		std::cin >> coordinates;
+		if(coordinates.length() != 11)
+		{
+			std::cout << "\nPlease do not use spaces";
+			std::cin >> coordinates;
+		}
+		else if(!numbersChecker(coordinates))
+		{
+			std::cout << "\nPlease make sure your numbers are correct (0-9)";
+		}
+		else if(!spaceChecker(coordinates,3))
+		{
+			std::cout << "\nPlease make sure you've selected 3 spaces in a line";
+		}
+		else
+		{
+			isEntryCorrect = true;
+		}
+	}while(!isEntryCorrect);
+	isEntryCorrect = false;
+	std::cout << "\nHere is your board\n";
+	std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
+	for(int i = 0; i < 10; i++)
+	{
+		std::cout << " " << i;
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << shipBoard[i][j];
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\nPlace the Submarine (3 spaces)";
+	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting row,starting column),(ending row,ending column) - Don't use spaces";
+	do
+	{
+		std::cout << "\n\n: ";
+		std::cin >> coordinates;
+		if(coordinates.length() != 11)
+		{
+			std::cout << "\nPlease do not use spaces";
+			std::cin >> coordinates;
+		}
+		else if(!numbersChecker(coordinates))
+		{
+			std::cout << "\nPlease make sure your numbers are correct (0-9)";
+		}
+		else if(!spaceChecker(coordinates,3))
+		{
+			std::cout << "\nPlease make sure you've selected 3 spaces in a line";
+		}
+		else
+		{
+			isEntryCorrect = true;
+		}
+	}while(!isEntryCorrect);
+	isEntryCorrect = false;
+	std::cout << "\nHere is your board\n";
+	std::cout << "   0 1 2 3 4 5 6 7 8 9\n";
+	for(int i = 0; i < 10; i++)
+	{
+		std::cout << " " << i;
+		for(int j = 0; j < 10; j++)
+		{
+			std::cout << " " << shipBoard[i][j];
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\nPlace the Destroyer (2 spaces)";
+	std::cout << "\nEnter the starting and ending coordinates like this:\n(starting row,starting column),(ending row,ending column) - Don't use spaces";
+	do
+	{
+		std::cout << "\n\n: ";
+		std::cin >> coordinates;
+		if(coordinates.length() != 11)
+		{
+			std::cout << "\nPlease do not use spaces";
+			std::cin >> coordinates;
+		}
+		else if(!numbersChecker(coordinates))
+		{
+			std::cout << "\nPlease make sure your numbers are correct (0-9)";
+		}
+		else if(!spaceChecker(coordinates,2))
+		{
+			std::cout << "\nPlease make sure you've selected 2 spaces in a line";
+		}
+		else
+		{
+			isEntryCorrect = true;
+		}
+	}while(!isEntryCorrect);
 }
 void Board::randomShips() //5,4,3,3,2
 {
@@ -475,6 +617,10 @@ bool Board::spaceChecker(std::string c, int spaces)
 				return(false);
 			}
 		}
+		for(int j = 0; j < spaces; j++)
+		{
+			shipBoard[ec+j][sr] = spaces;
+		}
 		return(true);
 	}
 	else if(sc == ec-spaces+1 && sr == er)
@@ -485,6 +631,10 @@ bool Board::spaceChecker(std::string c, int spaces)
 			{
 				return(false);
 			}
+		}
+		for(int j = 0; j < spaces; j++)
+		{
+			shipBoard[sc+j][sr] = spaces;
 		}
 		return(true);
 	}
@@ -497,6 +647,10 @@ bool Board::spaceChecker(std::string c, int spaces)
 				return(false);
 			}
 		}
+		for(int j = 0; j < spaces; j++)
+		{
+			shipBoard[sc][er+j] = spaces;
+		}
 		return(true);
 	}
 	else if(sc == ec && sr == er-spaces+1)
@@ -507,6 +661,10 @@ bool Board::spaceChecker(std::string c, int spaces)
 			{
 				return(false);
 			}
+		}
+		for(int j = 0; j < spaces; j++)
+		{
+			shipBoard[sc][sr+j] = spaces;
 		}
 		return(true);
 	}

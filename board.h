@@ -13,6 +13,8 @@ class Board
 		void randomShips();
 		void pickShips();
 		void printBoards();
+		bool numbersChecker(std::string c);
+		bool spaceChecker(std::string c, int spaces);
 	private:
 		int shipBoard [10][10];
 		char hitBoard [10][10];

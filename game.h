@@ -8,8 +8,8 @@ class Game
 {
 	public:
 		Game(Board* p, Board* c);
-		void playerGuess();
-		void compGuess();
+		bool playerGuess();
+		bool compGuess();
 	private:
 		Board* player;
 		Board* computer;

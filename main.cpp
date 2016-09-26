@@ -24,6 +24,16 @@ int main()
 	}
 	//Let user guess
 	//Computer guesses random spot - if a hit, pick consecutive spot (depth first)
+	bool playerWins = false;
+	bool compWins = false;
+	do
+	{
+		playerWins = game->playerGuess();
+		if(!playerWins)
+		{
+			compWins = game->compGuess();
+		}
+	}while(!playerWins && !compWins)​
 	delete computer;
 	delete player;
 	return(0);

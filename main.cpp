@@ -1,9 +1,13 @@
 #include <iostream>
 
+#include "board.h"
+#include "game.h"
+
 int main()
 {
 	Board* computer = new Board();
 	Board* player = new Board();
+	Game* game = new Game(player, computer);
 	computer->randomShips();
 	int choice = 0;
 	while(choice != 1 && choice != 2)
@@ -36,5 +40,6 @@ int main()
 	}while(!playerWins && !compWins)​
 	delete computer;
 	delete player;
+	delete game;
 	return(0);
 }

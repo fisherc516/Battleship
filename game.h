@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "board.h"
+#include "Queue.h"
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
@@ -21,6 +22,7 @@ class Game
 	private:
 		Board* player;
 		Board* computer;
+		Queue<int> compMoves;				
 };
 
 #endif
